@@ -59,7 +59,7 @@ const UserList = (props: any) => {
         return (
             <div className="card mr-4 bg-light" style={{border: 'none'}}>
                 <h6 className="card-header bg-info aFont">Users:</h6>
-                <div style={{height: '70vh', width: '100%', overflow: 'auto', border: '0px solid black', padding: '0'}}>
+                <div style={{height: '', width: '100%', overflow: 'auto', border: '0px solid black', padding: '0'}}>
                     <ul className="list-group bg-light">
                     {users?.map(user => {
                         if(parseInt(User.userid) !== user.id) {
