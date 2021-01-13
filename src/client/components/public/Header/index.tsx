@@ -20,9 +20,12 @@ const Header = (props: AppProps) => {
         }
 
         return (
-                <nav className="navbar navbar-info bg-info mb-3 d-flex justify-content-end shadow rounded">
-                        <Link to={'/'} className="btn btn-secondary ml-1 mr-1 btn-outline-dark shadow">Home</Link>
-                        {!isLoggedIn ? loginRegisterButtons() : profileButton()}
+                <nav className="navbar navbar-info bg-info mb-3 d-flex justify-content-between shadow rounded">
+                        <h2>Chatroom</h2>
+                        <div>
+                                <Link to={'/'} className="btn btn-secondary ml-1 mr-1 btn-outline-dark shadow">Home</Link>
+                                {!isLoggedIn ? loginRegisterButtons() : profileButton()}
+                        </div>
                 </nav>
 	);
 }
