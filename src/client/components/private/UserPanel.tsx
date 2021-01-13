@@ -27,8 +27,10 @@ const UserPanel = (props: AppProps) => {
 	return (
 		<>
 			<div className="container d-flex justify-content-start">
-				<UserList />
-				<ActiveChats />
+				<div style={{width: '100%'}} className="row">
+				<div className="col-sm-12 col-md-5"><UserList /></div>
+				<div className="col-sm-12 col-md-7"><ActiveChats /></div>
+				</div>
 			</div>
 		</>
 	);

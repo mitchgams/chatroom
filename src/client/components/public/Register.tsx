@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { json, SetAccessToken, User } from '../../utils/api';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Header from './Header';
 import { validate } from 'validate.js';
 import * as Constraints from '../../utils/constrains';
@@ -39,9 +39,8 @@ const Register= () => {
         const isValidInput = await validate(user, Constraints.constraints);
         if(isValidInput !== undefined) {
             const keys = Object.keys(isValidInput);
-            console.log(isValidInput)
-            let buildError: any = '';
-            keys.forEach((key:any) => {
+            let buildError: string = '';
+            keys.forEach((key: string) => {
                 if(isValidInput[key].length === 2) {
                     buildError = buildError + `<p>* ${isValidInput[key][0]}</p><p>* ${isValidInput[key][1]}</p>`;
                 }

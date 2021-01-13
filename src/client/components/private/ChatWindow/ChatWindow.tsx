@@ -75,9 +75,9 @@ const ChatWindow = (props: any) => {
 
     if(chat && recipient && messages) {
         return (
-            <div className="card col-sm-5" style={{border: 'none'}}>
+            <div className="card" style={{border: 'none'}}>
                 <div className="card-header bg-info aFont">Messages:</div>
-            <div className="col-sm-12  frame" style={{border: 'none'}}>
+            <div className="frame" style={{border: 'none'}}>
             <ul>
                 <Messages />
             </ul>
