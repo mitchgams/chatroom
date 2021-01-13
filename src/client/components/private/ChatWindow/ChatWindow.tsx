@@ -6,6 +6,7 @@ import Messages from './Messages';
 import './styles.scss'; 
 import { css } from "@emotion/core";
 import ClipLoader from "react-spinners/ClipLoader";
+import { JsxElement } from 'typescript';
 
 export interface IUseParams {
     chatid: string;
@@ -24,6 +25,7 @@ const ChatWindow = (props: any) => {
     const [messages, setMessages] = useState<IChatLastMessage[]>([]);
     const [recipient, setRecipient] = useState<IUserInfo>();
     const [messageToSend, setMessageToSend] = useState<string>('');
+    const [errorMessage, setError] = useState<JSX.Element>();
 
     let myInput = useRef();
 
@@ -56,11 +58,15 @@ const ChatWindow = (props: any) => {
     }, [props.chatid]);
 
     const handleSend = async() => {
-        setMessageToSend('');
+        setError(<></>);
+        if(messageToSend.length === 0) return;
         try {
             let post = await json('/api/chats/send_message/' + User.userid, 'POST', {userid: User.userid, chatid: props.chatid, message:messageToSend});
             if(post.status === 'complete') {
-                console.log('msg sent');
+                setMessageToSend('');
+            } else if(post.status === 'fail') {
+                console.log('Message failed to send.');
+                setError(<div className="alert alert-danger">Message failed to send.</div>);
             }
         } catch(e) {
             console.log(e);
@@ -83,7 +89,8 @@ const ChatWindow = (props: any) => {
                     <button onClick={handleSend} className="btn btn-secondary">Send</button>
                 </div>
             </div>
-        </div>        
+        </div>  
+        {errorMessage}      
         </div>
         );
     } else {
