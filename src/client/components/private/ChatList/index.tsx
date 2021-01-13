@@ -30,7 +30,7 @@ const ActiveChats = (props: any) => {
         return (
             <div className="card mr-3 mb-3 w-100" style={{border: 'none'}}>
                 <h6 className="card-header bg-info aFont">Active Chats: </h6>
-                <div style={{height: '', width: '100%', overflow: 'auto', padding: '0'}}>
+                <div style={{height: '600px', width: '100%', overflow: 'auto', padding: '0'}}>
                     <div className="list-group bg-light">
                         <ChatLists activeChats={activeChats} />
                     </div>
