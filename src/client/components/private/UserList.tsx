@@ -53,27 +53,30 @@ const UserList = (props: any) => {
         }
 
     }
-
-    return (
-        <div className="card mr-4 bg-light" style={{border: 'none'}}>
-            <h6 className="card-header bg-info">Users:</h6>
-            <div style={{height: '70vh', width: '20vw', overflow: 'auto', border: '0px solid black', padding: '0'}}>
-                <ul className="list-group bg-light">
-                {users?.map(user => {
-                    if(parseInt(User.userid) !== user.id) {
-                        return (
-                            <li className="list-group-item bg-light" key={user.id}>
-                                <a onClick={() => handleNewChat(user.id, event)} style={{textDecoration: 'none', color: 'black'}} href=''>
-                                    {user.firstname} {user.lastname}
-                                </a>
-                            </li>
-                        );
-                    }
-                })}
-                </ul>
+    if(!users) {
+        return <h5>Hellow</h5>
+    } else {
+        return (
+            <div className="card mr-4 bg-light" style={{border: 'none'}}>
+                <h6 className="card-header bg-info">Users:</h6>
+                <div style={{height: '70vh', width: '20vw', overflow: 'auto', border: '0px solid black', padding: '0'}}>
+                    <ul className="list-group bg-light">
+                    {users?.map(user => {
+                        if(parseInt(User.userid) !== user.id) {
+                            return (
+                                <li className="list-group-item bg-light" key={user.id}>
+                                    <a onClick={() => handleNewChat(user.id, event)} style={{textDecoration: 'none', color: 'black'}} href=''>
+                                        {user.firstname} {user.lastname}
+                                    </a>
+                                </li>
+                            );
+                        }
+                    })}
+                    </ul>
+                </div>
             </div>
-        </div>
-    );
+        );
+            }
 }
 
 export default UserList;

@@ -42,6 +42,7 @@ const Register= () => {
             } else if(results.code === 500) {
                 setRegisterError(<div className="alert mt-3 alert-danger">* Something went wrong.</div>);
             } else {
+                console.log(results)
                 SetAccessToken(results.token, { userid: results.userid, role: results.role, email: results.email, firstname: results.firstname, lastname: results.lastname });
                 history.push('/');
             }

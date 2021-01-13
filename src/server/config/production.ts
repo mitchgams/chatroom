@@ -1,13 +1,13 @@
 export default {
     mysql: {
         connectionLimit: 10,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASS,
-        host: process.env.DB_HOST,
-        database: process.env.DB_SCHEMA
+        user: 'bf4de2d14e832e',
+        password: '77d48370',
+        host: 'us-cdbr-east-03.cleardb.com',
+        database: 'heroku_e8ff464fabd2e87'
     },
     auth: {
-        secret: process.env.SECRET
+        secret: 'chickenbones'
     },
     debug: {
         isOn: true

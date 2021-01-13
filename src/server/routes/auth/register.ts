@@ -18,6 +18,7 @@ router.post('/', async(req, res, next) => {
         let user: IUser = req.body;
         user.password = HashPassword(req.body.password);
         let result: any = await DB.Users.insert(user);
+        console.log(result.insertId)
         let token = await CreateToken({ userid: result.insertId });
         res.json({
             token,
