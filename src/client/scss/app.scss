@@ -2,4 +2,11 @@ $theme-colors: (
     'primary': #0091ea //Covalence Blue!  :D
 );
 
+h2 {
+    font-family: 'Kanit', sans-serif;
+}
+.aFont {
+    font-family: 'Kanit', sans-serif;
+}
+
 @import '../../../node_modules/bootstrap/scss/bootstrap.scss';

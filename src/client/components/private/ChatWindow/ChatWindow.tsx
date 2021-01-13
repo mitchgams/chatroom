@@ -86,7 +86,7 @@ const ChatWindow = (props: any) => {
                     <div className="text text-r" style={{background: 'whitesmoke !important'}}>
                         <input className="mytext" value={messageToSend} onChange={e => setMessageToSend(e.target.value)} placeholder="Type a message" />
                     </div> 
-                    <button onClick={handleSend} className="btn btn-secondary">Send</button>
+                    <button onClick={handleSend} className="btn btn-secondary aFont">Send</button>
                 </div>
             </div>
         </div>  
