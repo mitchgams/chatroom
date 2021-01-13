@@ -77,7 +77,7 @@ const ChatWindow = (props: any) => {
         return (
             <div className="card" style={{border: 'none'}}>
                 <div className="card-header bg-info aFont">Messages:</div>
-            <div className="frame" style={{border: 'none'}}>
+            <div className="frame" style={{border: 'none', height: '500px'}}>
             <ul>
                 <Messages />
             </ul>
