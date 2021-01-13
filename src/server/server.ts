@@ -13,6 +13,7 @@ const morgan = require('morgan')
 app.use(express.static('public'));
 app.use(express.json());
 //app.use(morgan('dev'));
+//app.use(require('sanitize').middleware);
 app.use(passport.initialize());
 app.use(routes);
 

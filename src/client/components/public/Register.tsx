@@ -2,6 +2,9 @@ import * as React from 'react';
 import { json, SetAccessToken, User } from '../../utils/api';
 import { Link, useHistory } from 'react-router-dom';
 import Header from './Header';
+import { validate } from 'validate.js';
+import * as Constraints from '../../utils/constrains';
+import ReactHtmlParser, { processNodes, convertNodeToElement } from 'react-html-parser';
 
 interface IAppProps {}
 
@@ -33,21 +36,33 @@ const Register= () => {
     }
 
     const handleRegister = async() => {
-        try {
-            if(!user.email || !user.password || !user.firstname || !user.lastname) return setRegisterError(<div className="alert mt-3 alert-danger">* Please fill out all fields to continue.</div>);
-            if (user.password.length < 8) return setRegisterError(<div className="alert mt-3 alert-danger">* Please enter a password of at least 8 characters.</div>)
-            let results = await json('/auth/register', 'POST', user);
-            if(results.status === 'duplicate_email') {
-                setRegisterError(<div className="alert mt-3 alert-danger">* Email entered is already associated with a different account.</div>);
-            } else if(results.code === 500) {
-                setRegisterError(<div className="alert mt-3 alert-danger">* Something went wrong.</div>);
-            } else {
-                console.log(results)
-                SetAccessToken(results.token, { userid: results.userid, role: results.role, email: results.email, firstname: results.firstname, lastname: results.lastname });
-                history.push('/');
+        const isValidInput = await validate(user, Constraints.constraints);
+        if(isValidInput !== undefined) {
+            const keys = Object.keys(isValidInput);
+            console.log(isValidInput)
+            let buildError: any = '';
+            keys.forEach((key:any) => {
+                if(isValidInput[key].length === 2) {
+                    buildError = buildError + `<p>* ${isValidInput[key][0]}</p><p>* ${isValidInput[key][1]}</p>`;
+                }
+                buildError = buildError + `<p>* ${isValidInput[key][0]}</p>`;
+            });
+            setRegisterError(<div className="alert mt-3 alert-danger">{ReactHtmlParser(buildError)}</div>);
+        } else {    
+            try {
+                let results = await json('/auth/register', 'POST', user);
+                if(results.status === 'duplicate_email') {
+                    setRegisterError(<div className="alert mt-3 alert-danger">* Email entered is already associated with a different account.</div>);
+                } else if(results.code === 500) {
+                    setRegisterError(<div className="alert mt-3 alert-danger">* Something went wrong.</div>);
+                } else {
+                    console.log(results)
+                    SetAccessToken(results.token, { userid: results.userid, role: results.role, email: results.email, firstname: results.firstname, lastname: results.lastname });
+                    history.push('/');
+                }
+            } catch (e) {
+                throw e;
             }
-        } catch (e) {
-            throw e;
         }
     }
 
