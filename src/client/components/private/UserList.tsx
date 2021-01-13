@@ -56,8 +56,7 @@ const UserList = (props: any) => {
 
     }
     if(!users) {
-        history.push('/register');
-        return <h5>Hellow</h5>
+        return <h5></h5>
     } else {
         return (
             <div className="card mr-3 mb-3 bg-light" style={{border: 'none'}}>
