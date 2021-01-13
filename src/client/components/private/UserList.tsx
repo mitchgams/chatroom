@@ -57,7 +57,7 @@ const UserList = (props: any) => {
         return <h5>Hellow</h5>
     } else {
         return (
-            <div className="card mr-4 bg-light" style={{border: 'none'}}>
+            <div className="card mr-3 mb-3 bg-light" style={{border: 'none'}}>
                 <h6 className="card-header bg-info aFont">Users:</h6>
                 <div style={{height: '', width: '100%', overflow: 'auto', border: '0px solid black', padding: '0'}}>
                     <ul className="list-group bg-light">
