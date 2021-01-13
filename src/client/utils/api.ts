@@ -1,5 +1,6 @@
 import * as fetch from 'isomorphic-fetch';
 
+
 export let AccessToken: string = localStorage.getItem('token') || null;
 
 export let User: any = {
@@ -41,4 +42,14 @@ export const SetAccessToken = (token: string, user: {} = { userid: undefined, ro
     localStorage.setItem('email', User.email);
     localStorage.setItem('firstname', User.firstname);
     localStorage.setItem('lastname', User.lastname);
+}
+
+export const isTokenValid = async() => {
+    let search = await json(`/api/tokens/${User.userid}/${AccessToken}`);
+    if(search.token === 'not_found') {
+        return false;
+    } else {
+        return true
+    }
+
 }

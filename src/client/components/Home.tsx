@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useHistory } from 'react-router-dom';
-import { User } from '../utils/api';
+import { User, isTokenValid } from '../utils/api';
 import UserPanel from './private/UserPanel';
 import Header from './public/Header/index';
 
@@ -16,6 +16,10 @@ const Home: React.FC = (props: AppProps) => {
                 history.push('/login');
             } else {
                 setIsAllowed(true);
+            }
+            if(!(await isTokenValid())) {
+                alert('You\'re account has been deleted please re-register')
+                 history.push('/register');
             }
 		})();
 	}, []);

@@ -2,6 +2,9 @@ import { Query } from '../index';
 
 const findOne = async(id: string, token: string) => Query('SELECT * FROM tokens WHERE id = ? AND token = ?', [id, token]);
 
+
+const findByUserid = async(id: string, token: string) => Query('SELECT * FROM tokens WHERE userid = ? AND token = ?', [id, token]);
+
 const insert = async(userid: number) => {
     return Query('INSERT INTO TOKENS (userid) VALUES (?)', [userid]);
 }
@@ -11,5 +14,6 @@ const update = async(id: number, token: string) => Query('UPDATE tokens SET toke
 export default {
     findOne,
     insert,
-    update
+    update,
+    findByUserid
 }
