@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useHistory } from 'react-router-dom';
 import { useEffect, useState, useReducer } from 'react';
 import { json, User } from '../../utils/api';
 
@@ -14,6 +15,7 @@ interface IAppProps {
 const UserList = (props: any) => {
 
     const [users, setUsers] = useState<IUsers[]>([]);
+    const history = useHistory();
 
     useEffect(() => {
         (async() => {
@@ -54,6 +56,7 @@ const UserList = (props: any) => {
 
     }
     if(!users) {
+        history.push('/register');
         return <h5>Hellow</h5>
     } else {
         return (
