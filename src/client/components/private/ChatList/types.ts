@@ -20,6 +20,7 @@ export interface IChatLastMessage {
 export interface IUsers {
     [key: number]: IEachUsers;
 }
+
 export interface IEachUsers {
     userid1: number,
     userid2: number,
@@ -27,4 +28,11 @@ export interface IEachUsers {
     firstname2: string,
     lastname1: string,
     lastname2: string;
+}
+
+export interface IUserInfo {
+    id: number,
+    email: string,
+    firstname: string,
+    lastname: string;
 }

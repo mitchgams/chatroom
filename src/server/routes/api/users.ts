@@ -1,11 +1,11 @@
 import * as express from 'express';
 import * as DB from '../../db';
 import { isAdmin } from '../../utils/security/isAdmin';
-import { isChatAuthorized } from '../../utils/security/chatAuthorized';
+import { apiAccess } from '../../utils/security/chatAuthorized';
 
 const router = express.Router();
 
-router.get('/:userid?', isChatAuthorized, async(req, res, next) => {
+router.get('/:userid?', apiAccess, async(req, res, next) => {
     try {
         let users = await DB.default.Users.getAlls();
         res.send(users);
@@ -15,7 +15,7 @@ router.get('/:userid?', isChatAuthorized, async(req, res, next) => {
     }
 });
 
-router.get('/chat_users/:chatid?/:userid?', isChatAuthorized, async(req, res, next) => {
+router.get('/chat_users/:chatid?/:userid?', apiAccess, async(req, res, next) => {
     const { chatid } = req.params;
     try {
         let users = await DB.default.DirectChat.getChatUsers(parseInt(chatid));
@@ -26,7 +26,7 @@ router.get('/chat_users/:chatid?/:userid?', isChatAuthorized, async(req, res, ne
     }
 });
 
-router.get('/by_id/:recipientId?/:userid?', isChatAuthorized, async(req, res, next) => {
+router.get('/by_id/:recipientId?/:userid?', apiAccess, async(req, res, next) => {
     const { userid, recipientId } = req.params;
     if(userid && recipientId) {
         try {

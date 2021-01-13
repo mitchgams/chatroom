@@ -4,9 +4,11 @@ import { useParams } from 'react-router-dom';
 import { IChatLastMessage } from '../ChatList/types';
 import { json, User } from '../../../utils/api';
 import moment from 'moment';
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
 
 
-const Messages = (props: AppProps) => {
+const Messages = () => {
 	
     const [messages, setMessages] = useState<IChatLastMessage[]>([]);
     
@@ -25,7 +27,7 @@ const Messages = (props: AppProps) => {
     }, [chatid]);
 
     if(messages.length === 0) {
-        return <>Chat Empty</>; 
+        return <ClipLoader color={"#000000"} loading={true} css={""} size={15} />;
     } else {
         return (
             <>

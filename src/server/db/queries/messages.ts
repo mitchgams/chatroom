@@ -4,7 +4,7 @@ const getMessagesForChat = async(chatid: number) => Query('SELECT m.id, m.userid
 
 const getLastMessage = async(chatid: number) => {
     let messages = await Query('SELECT m.id, m.userid, m.chatid, m.text, m.created, u.firstname, u.lastname  FROM messages m JOIN users u ON m.userid = u.id WHERE m.chatid = ? ORDER BY m.created DESC', [chatid]);
-    return messages[0];
+    return messages;
 }
 
 const postMessage = async(userid: number, chatid: number, message: string) => {

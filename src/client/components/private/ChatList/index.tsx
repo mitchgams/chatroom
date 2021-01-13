@@ -4,6 +4,9 @@ import { json, User } from '../../../utils/api';
 import ChatLists from './ChatLists';
 import { IActiveChats, IUsers } from './types';
 
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
+
 
 
 const ActiveChats = (props: any) => {
@@ -22,7 +25,7 @@ const ActiveChats = (props: any) => {
     }, []);
 
     if(!activeChats) {
-        return <>loading</>;
+        return <ClipLoader color={"#000000"} loading={true} css={""} size={50} />;
     } else {
         return (
             <div className="card mr-3" style={{border: 'none'}}>

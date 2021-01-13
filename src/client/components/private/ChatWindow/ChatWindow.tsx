@@ -4,6 +4,8 @@ import { json, User } from '../../../utils/api';
 import { IActiveChats, IChatLastMessage } from '../ChatList/types';
 import Messages from './Messages';
 import './styles.scss'; 
+import { css } from "@emotion/core";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export interface IUseParams {
     chatid: string;
@@ -71,7 +73,7 @@ const ChatWindow = (props: any) => {
                 <div className="card-header bg-info">Messages:</div>
             <div className="col-sm-12  frame" style={{border: 'none'}}>
             <ul>
-                <Messages chatid={chat.id} />
+                <Messages />
             </ul>
             <div>
                 <div className="msj-rta macro d-flex" style={{margin: 'auto'}}>                        
@@ -84,7 +86,9 @@ const ChatWindow = (props: any) => {
         </div>        
         </div>
         );
-    } else return <p>loading...</p>
+    } else {
+        return <ClipLoader color={"#000000"} loading={true} css={""} size={50} />;
+    }
 };
 
 export default ChatWindow;
