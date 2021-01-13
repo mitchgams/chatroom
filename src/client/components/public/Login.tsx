@@ -49,7 +49,7 @@ const Login: React.FC = (IAppProps) => {
         <>
         <Header isLoggedIn={isLoggedIn} />
         <section className="card border-dark shadow">
-            <h5 className="card-header bg-info border-dark">Login</h5>
+            <h5 className="card-header bg-info border-dark aFont">Login</h5>
             <div className="card-body bg-light border-dark shadow-sm">
                 <label htmlFor="email">Email: </label><input type="email" name="email" onChange={handleChange} className="input-group"/>
                 <label htmlFor="password">Password: </label><input type="password" name="password" onChange={handleChange} className="input-group"/>
@@ -57,7 +57,7 @@ const Login: React.FC = (IAppProps) => {
                 <p>Don't have an account? <Link to={'/register'}>Register an account.</Link></p>
             </div>
             <div className="card-footer bg-info p-1 border-dark d-flex justify-content-end">
-                <button onClick={handleLogin} className="btn btn-secondary btn-outline-dark shadow">Login</button>
+                <button onClick={handleLogin} className="btn btn-secondary btn-outline-dark shadow aFont">Login</button>
             </div>
         </section>
         </>

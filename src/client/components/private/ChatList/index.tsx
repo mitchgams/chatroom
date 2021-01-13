@@ -29,7 +29,7 @@ const ActiveChats = (props: any) => {
     } else {
         return (
             <div className="card mr-3" style={{border: 'none'}}>
-                <h6 className="card-header bg-info">Active Chats: </h6>
+                <h6 className="card-header bg-info aFont">Active Chats: </h6>
                 <div style={{height: '70vh', width: '40vw', overflow: 'auto', padding: '0'}}>
                     <div className="list-group bg-light">
                         <ChatLists activeChats={activeChats} />

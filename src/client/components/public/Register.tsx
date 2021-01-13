@@ -56,7 +56,7 @@ const Register= () => {
         <>
         <Header isLoggedIn={isLoggedIn} />
         <section className="card border-dark shadow">
-            <h5 className="card-header bg-info border-dark">Register</h5>
+            <h5 className="card-header bg-info border-dark aFont">Register</h5>
             <div className="card-body bg-light border-dark shadow-sm">
                 <label htmlFor="email">Email: </label><input type="text" name="email" onChange={handleChange} className="input-group"/>
                 <label htmlFor="password">Password: </label><input type="password" name="password" onChange={handleChange} className="input-group"/>
@@ -66,7 +66,7 @@ const Register= () => {
                 {registerError}
             </div>
             <div className="card-footer bg-info p-1 border-dark d-flex justify-content-end">
-                <button onClick={handleRegister} className="btn btn-secondary btn-outline-dark shadow">Register</button>
+                <button onClick={handleRegister} className="btn btn-secondary btn-outline-dark shadow aFont">Register</button>
             </div>
         </section>
         </>

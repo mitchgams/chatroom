@@ -9,8 +9,8 @@ const Header = (props: AppProps) => {
         const loginRegisterButtons = () => {
                 return (
                         <>
-                                <Link to={'/login'} className="btn btn-secondary ml-1 mr-1 btn-outline-dark shadow">Login</Link>
-                                <Link to={'/register'} className="btn btn-secondary ml-1 mr-1 btn-outline-dark shadow">Register</Link>
+                                <Link to={'/login'} className="btn btn-secondary ml-1 mr-1 btn-outline-dark shadow aFont">Login</Link>
+                                <Link to={'/register'} className="btn btn-secondary ml-1 mr-1 btn-outline-dark shadow aFont">Register</Link>
                         </>
                 );
         }
@@ -23,7 +23,7 @@ const Header = (props: AppProps) => {
                 <nav className="navbar navbar-info bg-info mb-3 d-flex justify-content-between shadow rounded">
                         <h2>Chatroom</h2>
                         <div>
-                                <Link to={'/'} className="btn btn-secondary ml-1 mr-1 btn-outline-dark shadow">Home</Link>
+                                <Link to={'/'} className="btn btn-secondary ml-1 mr-1 btn-outline-dark shadow aFont">Home</Link>
                                 {!isLoggedIn ? loginRegisterButtons() : profileButton()}
                         </div>
                 </nav>
